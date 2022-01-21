@@ -1,0 +1,41 @@
+
+.picStyling {
+    padding: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem; 
+    font-family: sans-serif;
+}
+
+.picStyling img {
+     width:80%;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     border-radius: 5px;
+}
+.picStyling img:hover{
+    opacity: 0.7;
+}
+
+.picStyling input {
+    flex-direction: row;
+    span {
+        padding: 1px 8px;
+        display: table; 
+    }
+    
+}
+
+@media only screen and (min-width: 38rem) { /* this size is tailored to size of "web site title" */
+
+    /* in desktop the titleNav is not as tall, so less top margin needed to prevent titleNav from hiding top of for content */
+    .picStyling content {
+        margin-top: 1rem;
+    }
+
+    .picStyling titleNav {
+        /* flex attributes */
+        flex-direction: row;
+        justify-content: space-between; /* flex attribute will push title left and nav right, with "space between" */
+    }
+}

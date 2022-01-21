@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<!-- Homework 9 -->
+<html>
+    <head>
+        <title>UPP</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+        <link href="style/main.css" rel="stylesheet" type="text/css" />  
+        <link href="style/dropdown.css" rel="stylesheet" type="text/css" /> 
+        <link href="style/picStyling.css" rel="stylesheet" type="text/css" />  
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <link href="style/account.css" rel="stylesheet" type="text/css" />
+    </head>
+    
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                The U.P.P.
+            </div>
+            
+            <div id="nav">
+                <div class="dropdown">
+                    <a href="#/home">Home</a>
+                </div>
+                
+                <div class="dropdown">
+                    <div class="dropHeader">Account</div>
+                    <div class="dropContent">
+                        <a href="#/userInsert">Register</a> <br/>
+                        <a href="#/logOn">Log On</a> <br/>
+                        <a href="#/getProfile">Profile</a> <br/>
+                        <a href="#/logOff">Log Out</a> <br/>
+                    </div> 
+                </div>
+                
+                <div class="dropdown">
+                    <div class="dropHeader">Search</div>
+                    <div class="dropContent">
+                        <a href="#/jsobj">JS Objects</a> <br/>
+                        <a href="#/userFromJSON">Photographers</a> <br/>
+                        <a href="#/photoFromJSON">Photos</a> <br/>
+                        <a href="#/liveUsers">Live Users</a> <br/>
+                        <a href="#/livePhotos">Live Photos</a> <br/>
+                    </div>
+                </div>
+                
+                <div class="dropdown">
+                    <div class="dropHeader">Tutorial</div>
+                    <div class="dropContent">
+                        <a>Proposal</a> <br/>
+                        <a>Proof Of Concept</a> <br/>
+                        <a>Tutorial Home</a> <br/>
+                        <a>Demo</a> <br/>
+                    </div>  
+                </div>          
+                <div class="dropdown">
+                    <a href="#/blog">Blog</a>
+                </div>
+            </div>
+        </div>
+ 
+        
+        <!-- THE NAV BAR -->
+
+        <!-- Note: the JavaScript code expects there to be a DOM object with id "view" -->
+        <!-- This is where the content is placed. -->
+        <div id="content">
+
+        </div>
+
+        <!--Scripts sourced-->
+              
+        <script src="js/components/blog.js"></script>
+        <script src="js/components/home.js"></script>
+        <script src="js/components/jsobj.js"></script>
+        <script src="js/components/userFromJSON.js"></script>
+        <script src="js/components/photoFromJSON.js"></script>
+        <script src="js/components/userAPI.js"></script>
+        <script src="js/components/photoAPI.js"></script>
+        <script src="js/components/account.js"></script>
+        <script src="js/components/webUserMods.js"></script>
+        <script src="js/components/photoMods.js"></script>
+        <script src="js/components/liveUsers.js"></script>
+        <script src="js/components/livePhotos.js"></script>
+        
+        <script src="js/reusable/dropFW.js"></script>
+        <script src="js/reusable/makePic.js"></script>
+        <script src="js/reusable/twoPics.js"></script>
+        <script src="js/reusable/ajax.js"></script>
+        <script src="js/reusable/SortableTableUtils.js"></script>
+        <script src="js/reusable/MakeFullTable.js"></script>
+        <script src="js/reusable/Utils.js"></script>
+        <script src="js/reusable/routeParamFw.js"></script>
+        
+        <script src="js/CRUD_icons.js"></script>
+        
+        <script>
+            "use strict";
+
+            // Declare an array to store our routes:
+            var myRoutes = [];
+
+            // Add link/content entries into the route array.
+            // Remember that with JS associative array syntax, the keys look like index values even though 
+            // they are character strings, not integers. 
+            // In this version of the code, the value stored is a function not a character string.
+            myRoutes['#/home'] = home;
+            myRoutes['#/blog'] = blog; // blog is a function stored in js/components/blog.js
+            myRoutes['#/jsobj'] = jsobj;
+            myRoutes['#/userFromJSON'] = liveUsers;
+            myRoutes['#/photoFromJSON'] = photoFromJSON;
+            myRoutes['#/liveUsers'] = liveUsers;
+            myRoutes['#/livePhotos'] = livePhotos;
+            myRoutes['#/logOn'] = account.logOn;
+            myRoutes['#/logOff'] = account.logOff;
+            myRoutes['#/getProfile'] = account.getProfile;
+            myRoutes['#/userInsert'] = webUserMods.insert; 
+            myRoutes['#/photoInsert'] = photoMods.insert; 
+            myRoutes['#/userUpdate'] = webUserMods.update;
+            myRoutes['#/photoUpdate'] = photoMods.update;
+            // routeFw returns an object that has private and public 
+            // data members and methods. 
+            // This "consumer code" specifies input parameters of an array of objects that each 
+            // specify path and content, id of DOM element where the FW is to place the content, 
+            // and the desired starting path. 
+            var myRouteFw = routeParamFw({
+                routeArray: myRoutes,
+                contentId: "content", 
+                startLink: "#/home"
+            });
+
+            // print the routes (check console.log)
+            myRouteFw.printRoutes();
+        </script>
+        
+        <script>
+            dropFW("dropHeader", "dropContent", "hide", "show");
+        </script>
+        
+        
+        <div id="footer">
+            Erik Rodriguez 2021
+        </div>
+        
+    </body>
+</html>
